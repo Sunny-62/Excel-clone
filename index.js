@@ -5,6 +5,7 @@ head.appendChild(the);
 
 var columns=26;
 var currcell;
+var cutvalue={};
 for(var column=0;column<columns;column++){
     var the=document.createElement("th")
      the.innerText=String.fromCharCode(column+65);
@@ -46,6 +47,11 @@ var bgcolor=document.querySelector('#bg-color')
 var leftalign=document.querySelector('#left-align')
 var rightalign=document.querySelector('#right-align')
 var centeralign=document.querySelector('#center-align')
+var fontsize=document.querySelector('#font-size');
+var fontfamily=document.querySelector('#font-family');
+var cutbtn=document.querySelector('#cut-btn');
+var copybtn=document.querySelector('#copy-btn');
+var pastebtn=document.querySelector('#paste-btn');
 
 boldbtn.addEventListener("click",()=>{
     console.log(currcell);
@@ -92,9 +98,35 @@ currcell.style.textAlign="left";
 
                 currcell.style.textAlign="center";
                     })
-                    
-                
-        
+
+      fontsize.addEventListener("change",()=>{
+currcell.style.fontSize=fontsize.value;
+
+      })  
+      fontfamily.addEventListener("change",()=>{
+        currcell.style.fontFamily=fontfamily.value;
+      })        
+      cutbtn.addEventListener("click",()=>{
+        cutvalue={
+            style:currcell.style.cssText,
+            text:currcell.innerText,
+        };
+        currcell.style.cssText=null;
+        currcell.innerText=null;
+})
+copybtn.addEventListener("click",()=>{
+    cutvalue={
+        style:currcell.style.cssText,
+        text:currcell.innerText,
+    };
+
+})
+pastebtn.addEventListener("click",()=>{
+    currcell.style.cssText=cutvalue.style;
+    currcell.innerText=cutvalue.text;
+
+})
+
 
 
 
