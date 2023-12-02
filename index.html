@@ -9,6 +9,7 @@
 <body>
     
     <h1 id="current-cell"></h1>
+<div id="task-bar">
     <button id="cut-btn">cut</button>
     <button id="copy-btn">copy</button>
     <button id="paste-btn">paste</button>
@@ -41,8 +42,12 @@
     <button id="left-align">left align</button>
     <button id="right-align">right align</button>
     <button id="center-align">center align</button>
-    <br>
-    <br>
+    <button  onclick="downloadjson()">download</button>
+    <input type="file" id="json-file" accept=".json">
+</div>
+    
+
+
     <table >
         <thead id="table-heading-row">
             

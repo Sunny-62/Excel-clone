@@ -11,3 +11,12 @@ th,td{
 td:focus{
     outline: none;
 }
+#task-bar{
+    margin: 1px solid black;
+    padding:0.5rem;
+    display:flex;
+     justify-content:center; 
+     align-items: flex-start;
+    width: 100%;
+    background-color: cornflowerblue;
+}
