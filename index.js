@@ -14,6 +14,7 @@ for(var column=0;column<columns;column++){
 }
 var body=document.querySelector('#table-body')
 var rows=100;
+
 for(var row=0;row<rows;row++){
     var tr=document.createElement('tr');
     var th=document.createElement('th');
@@ -59,7 +60,15 @@ var cutbtn=document.querySelector('#cut-btn');
 var copybtn=document.querySelector('#copy-btn');
 var pastebtn=document.querySelector('#paste-btn');
 
+
 var matrix=new Array(rows);
+var numSheet=1;
+var arrMatrix=[matrix];
+var currSheetNum=1;
+
+
+
+
 for(var i=0;i<rows;i++){
     matrix[i]=new Array(columns);
     for(var j=0;j<columns;j++){
@@ -166,6 +175,14 @@ function updatejson(cell){
     var i=id[1]-1;
     var j=id[0].charCodeAt(0)-65;
     matrix[i][j]=json;
+if(arrMatrix.length==currSheetNum){
+arrMatrix[currSheetNum-1]=matrix;
+}
+else{
+    arrMatrix.push(matrix);
+}
+
+
     console.log(" updated matrix",matrix);
 }
 
@@ -222,5 +239,19 @@ reader.readAsText(file);
 
 }
 //the end is here
+document.querySelector('#add-sheet').addEventListener("click",()=>{
+alert("adding new sheet.....");
+numSheet++;
+currSheetNum=numSheet;
+for(var i=0;i<rows;i++){
+    matrix[i]=new Array(columns);
+    for(var j=0;j<columns;j++){
+        matrix[i][j]={};
+    }
+    }
+
+    document.querySelector('#sheet-num').innerText="sheet no.. "+currSheetNum;
+
+})
 
 
